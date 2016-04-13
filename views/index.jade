@@ -18,6 +18,7 @@ block css
     link(rel='stylesheet', href='css/castom.css', type='text/css')
     //ICONS
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', type='text/css')
+
 block navDescriptor
     nav#mainNav.navbar.navbar-default.navbar-fixed-top
       .container-fluid
@@ -38,7 +39,7 @@ block navDescriptor
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
             li
-              a#callMeplz.page-scroll(href='#page-top', data-toggle='modal', data-target='#exampleModal', data-whatever='callMe')!=PHONE 
+              a#callMeplz.pinkphone.page-scroll(href='#page-top', data-toggle='modal', data-target='#exampleModal', data-whatever='callMe')!=PHONE 
             li
               a.page-scroll(href='#about')!=ABOUT
             |                     
@@ -66,7 +67,7 @@ block boomcall
         .row
           .col-lg-8.col-lg-offset-2.text-center
             p.text-faded!=BOOMNOTE1
-            a.btn.btn-default.btn-xl.wow.tada(type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='callMe')!=SIGNUP0
+            a.btn.btn-default.btn-xl.wow.tada(type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='consultation')!=SIGNUP0
 
 block boomcalculate     
     section#phase.boom.bg-primary
@@ -74,7 +75,7 @@ block boomcalculate
         .row
           .col-lg-8.col-lg-offset-2.text-center
             p.text-faded!=BOOMNOTE2
-            a.btn.btn-default.btn-xl.wow.tada(type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='callMe')!=SIGNUP1
+            a.btn.btn-default.btn-xl.wow.tada(type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='calculation')!=SIGNUP1
 block boom     
     section#about.bg-primary
       .container
@@ -93,49 +94,17 @@ block arguments
             h2.section-heading!=WHYUS
             |                     
             hr.primary
-
       .container
         .row
-          .col-lg-3.col-md-6.text-center
-            .service-box
-              i.fa.fa-fort-awesome.fa-4x.wow.bounceIn.text-primary
-              h3!=ADVANTAGES[0]
-              //p.text-muted!=NAMESADVANTAGES[0]
-          .col-lg-3.col-md-6.text-center.advantages
-            .service-box
-              i.fa.fa-4x.fa-flag.wow.bounceIn.text-primary(data-wow-delay='.3s')
-              h3!=ADVANTAGES[1]
-              //p.text-muted!=NAMESADVANTAGES[1]                 
-          .col-lg-3.col-md-6.text-center.advantages
-            .service-box
-              i.fa.fa-4x.fa-calendar.wow.bounceIn.text-primary(data-wow-delay='.1s')
-              h3!=ADVANTAGES[2]
-              //p.text-muted!=NAMESADVANTAGES[2]
-          .col-lg-3.col-md-6.text-center.advantages
-            .service-box
-              i.fa.fa-4x.fa-key.wow.bounceIn.text-primary(data-wow-delay='.2s')
-              h3!=ADVANTAGES[3]
-              //p.text-muted!=NAMESADVANTAGES[3]
-          .col-lg-3.col-md-6.text-center.advantages
-            .service-box
-              i.fa.fa-4x.fa-hospital-o.wow.bounceIn.text-primary
-              h3!=ADVANTAGES[4]
-              //p.text-muted!=NAMESADVANTAGES[4]
-          .col-lg-3.col-md-6.text-center.advantages
-            .service-box
-              i.fa.fa-4x.fa-paper-plane-o.wow.bounceIn.text-primary(data-wow-delay='.3s')
-              h3!=ADVANTAGES[5]
-              //p.text-muted!=NAMESADVANTAGES[5]
-          .col-lg-3.col-md-6.text-center.advantages
-            .service-box
-              i.fa.fa-4x.fa-star.wow.bounceIn.text-primary(data-wow-delay='.1s')
-              h3!=ADVANTAGES[6]
-              //p.text-muted!=NAMESADVANTAGES[6]
-          .col-lg-3.col-md-6.text-center.advantages
-            .service-box
-              i.fa.fa-4x.fa-child.wow.bounceIn.text-primary(data-wow-delay='.2s')
-              h3!=ADVANTAGES[7]
-              //p.text-muted!=NAMESADVANTAGES[7]
+         - var n = 0
+            while n < 8
+              .col-lg-3.col-md-4.col-sm-6.col-xs-6.text-center.advantages
+                .service-box
+                 - var classfafa = ICONSADVANTAGES[(n)]
+                  img(src='img/pictograms/'+(n+1)+'.png', alt='',width='100')
+                  h4!=ADVANTAGES[(n)]
+                  //p.text-muted!=NAMESADVANTAGES[(n)] 
+                - n++
 block phase     
     section
       .container
@@ -149,14 +118,12 @@ block phase
         .row
          - var n = 0
             while n < 8
-              - n++
-              .col-lg-3.col-md-6.text-center.phases
+              .col-lg-3.col-md-4.col-sm-6.col-xs-6.text-center.phases
                 .service-box
-                  img(src='img/phase/'+n+'.png', alt='PHASENOTE[(n-1)')
-                  h3!=PHASES[(n-1)]
-                  p.text-muted!=PHASENOTE[(n-1)]
-
-         
+                  img(src='img/phase/'+(n+1)+'.png', alt='PHASENOTE[(n)')
+                  h3!=PHASES[(n)]
+                  p.text-muted!=PHASENOTE[(n)]
+              - n++
 block portfolio   
     section#portfolio
       .container-fluid
@@ -164,49 +131,16 @@ block portfolio
           .col-lg-12.text-center
             h2.section-heading!=EXAMPLES
             hr.primary
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/areas/1.jpg', alt='')
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTAREA1
-                  .project-name!=PORTAREANAME1
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/areas/2.jpg', alt='')
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTAREA2
-                  .project-name!=PORTAREANAME2
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/areas/3.jpg', alt='')
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTAREA3
-                  .project-name!=PORTAREANAME3
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/areas/4.jpg', alt='')
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTAREA4
-                  .project-name!=PORTAREANAME4
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/areas/5.jpg', alt='')
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTAREA5
-                  .project-name!=PORTAREANAME5
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/areas/6.jpg', alt='')
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTAREA6
-                  .project-name!=PORTAREANAME6
-
+          - var n = 0
+            while n < 7
+              .col-lg-4.col-md-6
+                span.portfolio-box
+                  img.img-responsive(src='img/areas/'+(n+1)+'.jpg', alt='')
+                  .portfolio-box-caption
+                    .portfolio-box-caption-content
+                        .project-category.text-faded!=PORTAREAS[(n)]
+                        .project-name!=PORTAREANAMES[(n)]
+              - n++
 block portfolio2  
     section#services
       .container-fluid
@@ -214,62 +148,15 @@ block portfolio2
           .col-lg-12.text-center
             h2.section-heading!=SERVICES
             hr.primary
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/services/1.jpg', alt='')
-              |                         
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTCATEGORY1
-                  .project-name!=PORTNAME1
-          |                 
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/services/2.jpg', alt='')
-              |                         
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTCATEGORY2
-                  .project-name!=PORTNAME2
-          |                 
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/services/3.jpg', alt='')
-              |                         
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTCATEGORY3
-                  .project-name!=PORTNAME3
-          |                 
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/services/4.jpg', alt='')
-              |                         
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTCATEGORY4
-                  .project-name!=PORTNAME4
-          |                 
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/services/5.jpg', alt='')
-              |                         
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTCATEGORY5
-                  .project-name!=PORTNAME5
-          |                 
-          .col-lg-4.col-sm-6
-            a.portfolio-box(href='#')
-              img.img-responsive(src='img/services/6.jpg', alt='')
-              |                         
-              .portfolio-box-caption
-                .portfolio-box-caption-content
-                  .project-category.text-faded!=PORTCATEGORY6
-                  .project-name!=PORTNAME6
-
-
-
+          - var n = 0
+            while n < 9
+              .col-lg-4.col-sm-6
+                span.portfolio-box(href="")
+                  img.img-responsive(src='img/services/'+(n+1)+'.jpg', alt='')
+                  .portfolio-box-caption
+                    .portfolio-box-caption-content
+                      .project-category.text-faded!=PORTCATEGORYES[(n)]
+              - n++	
 block trust
     aside.bg-dark
       .container.text-center
@@ -277,7 +164,7 @@ block trust
           h2!=CALLTOACTION
           p!=CALLTOACTIOTEXT
                              
-          a.btn.btn-default.btn-xl.wow.tada(type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='callMe')!=SIGNUP2
+          a.btn.btn-default.btn-xl.wow.tada(type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='consultation')!=SIGNUP2
 
 
 block faq 
@@ -292,11 +179,11 @@ block faq
           .col-lg-4.col-md-4.text-center
             i.fa.fa-phone.fa-3x.wow.bounceIn
             p!=PHONE
-          .col-lg-4.text-center
+          .col-lg-4.col-md-4.text-center
             i.fa.fa-envelope-o.fa-3x.wow.bounceIn(data-wow-delay='.1s')
             p
               a(href='mailto:!=EMAIL')!=EMAIL
-          .col-lg-4.text-center
+          .col-lg-4.col-md-4.text-center
             i.fa.fa-3x.wow.bounceIn(data-wow-delay='.1s')="ЮНА"
             p
               a(href="http://juna-life.ru/" target="_blank")!=SITE
@@ -314,7 +201,6 @@ block scripts
     // Custom Theme JavaScript
     script(src='js/creative.js')
     script(src='js/centerPhone.js')
-
 block modalW
     #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel')
       .modal-dialog(role='document')
@@ -334,7 +220,14 @@ block modalW
             button#SendForm.btn.btn-primary(type='button', data-dismiss='modal', disabled="disabled")!=SEND
     script(src='js/modalMagic.js')
 block yaMap
-    script(src='https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=oBOv0O448wfHCxQq0CyJ1ZE0LvFjrXCS&width=100%&height=600&lang=ru_RU&sourceType=constructor')
+    .row.addressROW 
+      .col-lg-6
+        script(src='https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=oBOv0O448wfHCxQq0CyJ1ZE0LvFjrXCS&width=100%&height=600&lang=ru_RU&sourceType=constructor')
+      .col-lg-6.text-center
+        p
+          h3!=ADDRESSSLOGAN
+          span.text!=ADDRESSNOTE
+          span.pinkphone!=PHONE
 block yaCounter
        script(src='js/YaCounter.js')
 block errors

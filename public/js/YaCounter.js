@@ -2,10 +2,12 @@
         (w[c] = w[c] || []).push(function() {
             try {
                 w.yaCounter36494630 = new Ya.Metrika({
-                    id:34102550,
+                    id:36494630,
                     clickmap:true,
                     trackLinks:true,
-                    accurateTrackBounce:true
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true
                 });
             } catch(e) { }
         });

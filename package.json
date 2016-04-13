@@ -1,6 +1,6 @@
 {
-  "name": "armasao",
-  "version": "0.0.0",
+  "name": "landpageb24",
+  "version": "0.0.3",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,5 +14,17 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "description": "transport utm to b24",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goshva/LP.git"
+  },
+  "author": "sha.egor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goshva/LP/issues"
+  },
+  "homepage": "https://github.com/goshva/LP#readme"
 }

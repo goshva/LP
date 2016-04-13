@@ -18,7 +18,7 @@ else  {
     // do something for huge screens
     var parentWidth = $("#callMeplz").parent().parent().width();
 
-    $("#callMeplz").width($("#callMeplz").parent().parent().width()*1.234);
+    $("#callMeplz").width($("#callMeplz").parent().parent().width()*1.22);
 }
 
 

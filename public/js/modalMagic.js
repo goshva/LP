@@ -1,14 +1,16 @@
 var FullValid = {};
+var recipient;
 $('#exampleModal').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    recipient = button.data('whatever') // Extract info from data-* attributes
     var modal = $(this)
- //   modal.find('.modal-title').text('New message to ' + recipient)
+//    modal.find('.modal-title').text('New message to ' + recipient)
+
 
     var MimimalInfo = {
         "callMe": ["tel", "client-name"],
+        "consultation": ["tel", "client-name","client-secondname","message-text"],
+        "calculation": ["tel", "client-name","client-secondname", "client-lastname","message-text"],
         "coupon": ["tel", "client-name","client-lastname"],
         "signUp": ["tel", "client-name", "client-secondname", "client-lastname"],
         "mailUs": ["email", "message-text"]
@@ -22,7 +24,9 @@ $('#exampleModal').on('show.bs.modal', function(event) {
         $("." + MimimalInfo[recipient][i]).show()
         FullValid[MimimalInfo[recipient][i]] = 0;
     }
+$("#productID").val(recipient);
 })
+
 
 $(function() {
 
@@ -39,10 +43,10 @@ $(function() {
                 lastname: $("#client-lastname").val()
             })
             .done(function(data) {
-                alert("Data Loaded: " + data);
+             //   alert("Data Loaded: " + data);
             })
             .fail(function() {
-                alert("error, try phone number");
+                alert("error, try CALL");
             })
     });
 
@@ -109,5 +113,16 @@ $('#client-secondname').keyup(function() {
     if (!characterReg.test(inputVal)) {
         $(this).after('<span class="error error-keyup-4"> **</span>');
     } else(ValidFORM("client-secondname", 1))
+
+});
+
+$('#message-text').keyup(function() {
+    $('span.error-keyup-4').remove();
+    ValidFORM("message-text", 0)
+    var inputVal = $(this).val();
+    var characterReg = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']{0,20}?$/;
+    if (!characterReg.test(inputVal)) {
+        $(this).after('<span class="error error-keyup-4"> **</span>');
+    } else(ValidFORM("message-text", 1))
 
 });
