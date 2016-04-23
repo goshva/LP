@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-
+console.log(req.body)
     var comment = req.body.comment;
     var phone = req.body.phone;
     var email = req.body.email;
@@ -14,8 +14,9 @@ router.post('/', function(req, res, next) {
     var secondName = req.body.secondName;
     var lastname = req.body.lastname;
     var productID = req.body.productID;
-
-    tobitrixLead.sender(comment,phone,email,name,secondName,lastname,productID);
+    var SOURCE_DESCRIPTION = req.body.utm;
+    var UTMS =JSON.parse(req.body.utm); 
+    tobitrixLead.sender(comment,phone,email,name,secondName,lastname,productID,SOURCE_DESCRIPTION,UTMS);
     res.send(name);
 
 });

@@ -4,8 +4,13 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-var Days = "7 дней";
+var url = require('url');
+var url_parts = url.parse(req.url, true);
+var query = url_parts.query;
+console.log(url_parts.query);
+var userHiddenform = JSON.stringify(url_parts.query);
 
+var Days = "7 дней";
 function formatDate(date) {
 var hours = date.getHours();
 var minutes = date.getMinutes();
@@ -24,6 +29,7 @@ var pageWordsetup = {
     ADDRESSSLOGAN:'Добраться до нас несложно',
     ADDRESSNOTE:'<p> всего 5 минут от аэропорта Шереметьево или<br> 10 мин от Москвы по Дмитровскому шоссе и Вы у нас!</p><p>ОТ ДМИТРОВСКОГО ШОССЕ: <br /> 8 км. от МКАД, д. Красная горка, владение 9. <br /> (разворот на посту ДПС и поворот направо через 400 метров)<br /> <br /> ОТ ЛЕНИНГРАДСКОГО ШОССЕ: <br /> по направлению в сторону аэропорта &laquo;Шереметьево-2&raquo;, далее 10 минут от аэропорта. </p><p>От Ж/Д &laquo;САВЁЛОВСКАЯ&raquo;, СТ. &laquo;ШЕРЕМЕТЬЕВСКАЯ&raquo;: <br /> 4 вагон от головы поезда, спустится с платформы <br /> и идти 15-20 мин., пешком по ул. Свердлова, до конца</p><p>&nbsp;</p><p>GPS-координаты:<br /> Долгота: 37&deg;31&prime;13.9&Prime; в. д. (37.520528)<br /> Широта: 55&deg;59&prime;11.53&Prime; с. ш. (55.986535)</p>',
     PHONE: '+7 (969) 017-36-57',
+//    PHONE: '+7 (909) 925-20-05',
     EMAIL: 'banket.juna-life@mail.ru',
     CALLME: "Заказать звонок",
     ABOUT: "О нас",
@@ -78,10 +84,11 @@ PORTAREANAMES: [
     BOOMBUTTON:"Получить купон",
     MODALHEADER:"Введите информацию о себе",
     SEND:"Отправить",
-    CLOSE:"Закрыть"
+    CLOSE:"Закрыть",
+    UTM: userHiddenform 
 
 }
-  res.render('index', pageWordsetup);
+  res.render('index', pageWordsetup );
 });
 
 module.exports = router;

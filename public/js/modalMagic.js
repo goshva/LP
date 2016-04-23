@@ -17,7 +17,7 @@ $('#exampleModal').on('show.bs.modal', function(event) {
     }
 
     $('.inputFields').hide();
-    $('.form-control').val("");
+//    $('.form-control').val("");
     $("#SendForm").prop("disabled", true)
     FullValid = {};
     for (i = 0; i < MimimalInfo[recipient].length; i++) {
@@ -34,6 +34,7 @@ $(function() {
 
         $.post("/forms", {
                 productID: $("#productID").val(),
+                utm: $("#utm").val(),
                 time: "2pm",
                 comment: $("#message-text").val(),
                 phone: $("#tel").val(),

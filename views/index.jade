@@ -132,7 +132,7 @@ block portfolio
             h2.section-heading!=EXAMPLES
             hr.primary
           - var n = 0
-            while n < 7
+            while n < 6
               .col-lg-4.col-md-6
                 span.portfolio-box
                   img.img-responsive(src='img/areas/'+(n+1)+'.jpg', alt='')
@@ -211,10 +211,13 @@ block modalW
             h4#exampleModalLabel.modal-title!=MODALHEADER
           .modal-body
             form
-              each val, index in {'productID':null, 'tel':'Телефон', 'email':'Электроная почта','client-lastname':'Фамилия','client-name':'Имя','client-secondname':'Очество','message-text':'Комментарий'}
+              each val, index in {'productID':'Вид заказа', 'tel':'Телефон', 'email':'Электроная почта','client-lastname':'Фамилия','client-name':'Имя','client-secondname':'Очество','message-text':'Комментарий','utm': 'utm'}
                 .form-group.inputFields(class=index)
                   label.control-label(for=index)=val +":"
-                  input(id=index).form-control(type=index, required=true)
+                  if val == 'utm'
+                    input(id=index, value="#{UTM}").form-control(type=index, required=true)
+                  else       
+                    input(id=index).form-control(type=index, required=true)
            .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal')!=CLOSE
             button#SendForm.btn.btn-primary(type='button', data-dismiss='modal', disabled="disabled")!=SEND
